@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "filename": "2024-01-15_entry1.txt",
+      "title": "Entry 1",
+      "date": "2024-01-15",
+      "tags": ["personal"]
+    },
+    {
+      "filename": "2024-01-16_entry2.rtf",
+      "title": "Entry 2",
+      "date": "2024-01-16",
+      "tags": ["work"]
+    }
+  ]
+}

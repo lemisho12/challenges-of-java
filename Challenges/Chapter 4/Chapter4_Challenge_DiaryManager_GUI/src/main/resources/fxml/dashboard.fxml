@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.diary.manager.controllers.DashboardController"
+            stylesheets="@../css/common.css">
+
+    <top>
+        <VBox spacing="10">
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to right, #4a90e2, #63b3ed); -fx-padding: 15;">
+                <Label text="Personal Diary Manager" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;">
+                    <graphic>
+                        <ImageView fitHeight="30" fitWidth="30">
+                            <Image url="@../images/app-icon.png" />
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <HBox spacing="10" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+                    <Button fx:id="btnToggleTheme" text="🌓" style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-text-fill: white;" />
+                    <Button fx:id="btnNewEntry" text="+ New Entry" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;" />
+                </HBox>
+            </HBox>
+
+            <!-- Navigation Bar -->
+            <HBox fx:id="navigationBar" spacing="0" style="-fx-background-color: #f8f9fa;">
+                <Button fx:id="btnDashboard" text="Dashboard" styleClass="nav-button" />
+                <Button fx:id="btnEditor" text="Editor" styleClass="nav-button" />
+                <Button fx:id="btnBrowser" text="Browser" styleClass="nav-button" />
+                <Button fx:id="btnSearch" text="Search" styleClass="nav-button" />
+                <Button fx:id="btnSettings" text="Settings" styleClass="nav-button" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <!-- Dashboard Content -->
+        <VBox spacing="20" style="-fx-padding: 30;">
+            <Label text="Dashboard Overview" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+            <!-- Stats Cards -->
+            <HBox spacing="20">
+                <VBox style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);"
+                      prefWidth="200">
+                    <Label text="Total Entries" style="-fx-text-fill: #7f8c8d; -fx-font-size: 14px;" />
+                    <Label fx:id="lblTotalEntries" text="0" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #3498db;" />
+                </VBox>
+
+                <VBox style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);"
+                      prefWidth="200">
+                    <Label text="This Month" style="-fx-text-fill: #7f8c8d; -fx-font-size: 14px;" />
+                    <Label fx:id="lblRecentEntries" text="0" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #2ecc71;" />
+                </VBox>
+
+                <VBox style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);"
+                      prefWidth="200">
+                    <Label text="Favorites" style="-fx-text-fill: #7f8c8d; -fx-font-size: 14px;" />
+                    <Label fx:id="lblFavorites" text="0" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" />
+                </VBox>
+            </HBox>
+
+            <Separator />
+
+            <!-- Recent Entries -->
+            <VBox spacing="10">
+                <Label text="Recent Entries" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <ListView fx:id="recentEntriesList" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-radius: 5;"
+                          prefHeight="300" />
+            </VBox>
+
+            <!-- Quick Actions -->
+            <VBox spacing="10">
+                <Label text="Quick Actions" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                <HBox spacing="10">
+                    <Button text="📝 Write New Entry" onAction="#createNewEntry"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+                    <Button text="🔍 Search Entries" onAction="#loadSearch"
+                            style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+                    <Button text="⭐ View Favorites"
+                            style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>

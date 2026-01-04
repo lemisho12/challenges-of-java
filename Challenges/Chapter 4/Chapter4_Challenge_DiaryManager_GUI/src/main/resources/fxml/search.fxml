@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.diary.manager.controllers.SearchController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Search Entries" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        <HBox spacing="5" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+            <Label fx:id="lblSearchStatus" text="Ready" style="-fx-text-fill: #7f8c8d;" />
+        </HBox>
+    </HBox>
+
+    <Separator />
+
+    <!-- Search Bar -->
+    <VBox spacing="10">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="txtSearch"
+                       promptText="Type to search entries..."
+                       prefWidth="400"
+                       HBox.hgrow="ALWAYS" />
+            <Button text="Clear" onAction="#clearSearch" />
+            <Button text="Export Results" onAction="#exportResults" styleClass="button-primary" />
+        </HBox>
+
+        <ProgressBar fx:id="searchProgress" prefWidth="400" progress="0" />
+    </VBox>
+
+    <!-- Search Options -->
+    <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label text="Search Options" style="-fx-font-weight: bold;" />
+
+        <HBox spacing="20">
+            <VBox spacing="5">
+                <Label text="Search in:" />
+                <CheckBox fx:id="chkSearchTitle" text="Title" />
+                <CheckBox fx:id="chkSearchContent" text="Content" />
+                <CheckBox fx:id="chkSearchTags" text="Tags" />
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Date Range:" />
+                <HBox spacing="5">
+                    <DatePicker fx:id="dateFrom" />
+                    <Label text="to" />
+                    <DatePicker fx:id="dateTo" />
+                </HBox>
+            </VBox>
+
+            <VBox spacing="5">
+                <CheckBox fx:id="chkFavoritesOnly" text="Favorites Only" />
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Sort by:" />
+                <ComboBox fx:id="cmbSortBy" prefWidth="150" />
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Results Area -->
+    <HBox spacing="20" HBox.hgrow="ALWAYS">
+        <!-- Search Results -->
+        <VBox spacing="10" prefWidth="500" VBox.vgrow="ALWAYS">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label fx:id="lblResultCount" text="0 results" style="-fx-font-weight: bold;" />
+                <HBox HBox.hgrow="ALWAYS" />
+                <Label text="Double-click to open entry" style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" />
+            </HBox>
+
+            <TableView fx:id="searchResults" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colResultTitle" text="Title" />
+                    <TableColumn fx:id="colResultDate" text="Date" />
+                    <TableColumn fx:id="colResultPreview" text="Preview" />
+                </columns>
+            </TableView>
+        </VBox>
+
+        <!-- Result Detail -->
+        <VBox spacing="10" prefWidth="400" VBox.vgrow="ALWAYS">
+            <Label text="Entry Details" style="-fx-font-weight: bold;" />
+            <TextArea fx:id="resultDetail"
+                      editable="false"
+                      wrapText="true"
+                      VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-border-color: #bdc3c7; -fx-border-radius: 4px;" />
+        </VBox>
+    </HBox>
+
+</VBox>

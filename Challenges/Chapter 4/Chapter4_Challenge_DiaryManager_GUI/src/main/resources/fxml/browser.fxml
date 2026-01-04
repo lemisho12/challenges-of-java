@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.diary.manager.controllers.BrowserController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Entry Browser" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        <HBox spacing="5" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+            <Button fx:id="btnToggleView" text="📄 Card View" />
+        </HBox>
+    </HBox>
+
+    <Separator />
+
+    <!-- Filter Bar -->
+    <HBox fx:id="filterBar" spacing="10" alignment="CENTER_LEFT">
+        <Label text="Filter:" />
+        <ComboBox fx:id="cmbFilter" prefWidth="120" />
+        <DatePicker fx:id="dateFilter" />
+        <TextField fx:id="txtTagFilter" promptText="Enter tag..." prefWidth="150" />
+        <HBox HBox.hgrow="ALWAYS" />
+        <Label text="Double-click to view, right-click for more options" style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" />
+    </HBox>
+
+    <!-- Main Content Area -->
+    <HBox spacing="20" HBox.hgrow="ALWAYS">
+        <!-- Entries Table -->
+        <VBox spacing="10" prefWidth="700" VBox.vgrow="ALWAYS">
+            <TableView fx:id="entriesTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colTitle" text="Title" />
+                    <TableColumn fx:id="colDate" text="Date" />
+                    <TableColumn fx:id="colPreview" text="Preview" />
+                    <TableColumn fx:id="colTags" text="Tags" />
+                </columns>
+            </TableView>
+
+            <!-- Action Buttons -->
+            <HBox spacing="10">
+                <Button fx:id="btnView" text="👁 View" styleClass="button" />
+                <Button fx:id="btnEdit" text="✏ Edit" styleClass="button-primary" />
+                <Button fx:id="btnDelete" text="🗑 Delete" styleClass="button-danger" />
+                <Button fx:id="btnExport" text="📤 Export" styleClass="button" />
+                <HBox HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblEntryCount" text="0 entries" />
+            </HBox>
+        </VBox>
+
+        <!-- Entry Details Panel -->
+        <VBox fx:id="detailPanel" spacing="10" prefWidth="400" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+            <VBox spacing="5">
+                <Label fx:id="lblDetailTitle" text="No Entry Selected" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                <HBox spacing="10">
+                    <Label fx:id="lblDetailDate" text="" style="-fx-text-fill: #7f8c8d;" />
+                    <Label fx:id="lblDetailMood" text="" style="-fx-text-fill: #7f8c8d;" />
+                </HBox>
+            </VBox>
+
+            <Separator />
+
+            <TextArea fx:id="entryDetail"
+                      editable="false"
+                      wrapText="true"
+                      VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+        </VBox>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "2024-01-15_entry1",
+    "title": "Sample entry content for 2024-01-15.",
+    "content": "Sample entry content for 2024-01-15.",
+    "createdDate": "2026-01-01T00:20:26.730299600",
+    "modifiedDate": "2026-01-01T00:41:53.841386200",
+    "tags": [],
+    "favorite": true,
+    "mood": "Neutral",
+    "relevanceScore": 0
+  },
+  {
+    "id": "2026-01-01_004646_manday",
+    "title": "manday",
+    "content": "haftahhj mnhg",
+    "createdDate": "2026-01-01T00:46:46.931047600",
+    "modifiedDate": "2026-01-01T00:46:46.931047600",
+    "tags": [],
+    "favorite": true,
+    "mood": "😢 Sad",
+    "relevanceScore": 0
+  },
+  {
+    "id": "2026-01-01_004653_manday_copy",
+    "title": "manday (Copy)",
+    "content": "haftahhj mnhg",
+    "createdDate": "2026-01-01T00:46:53.990233700",
+    "modifiedDate": "2026-01-01T00:46:53.990233700",
+    "tags": [],
+    "favorite": true,
+    "mood": "😢 Sad",
+    "relevanceScore": 0
+  }
+]

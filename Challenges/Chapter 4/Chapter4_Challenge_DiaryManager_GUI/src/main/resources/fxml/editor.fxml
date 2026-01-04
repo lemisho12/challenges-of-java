@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.HTMLEditor?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="editorContainer" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.diary.manager.controllers.EditorController"
+      spacing="10" style="-fx-padding: 20;">
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Diary Editor" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        <HBox spacing="5" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+            <Button fx:id="btnSave" text="💾 Save" styleClass="button-primary" />
+            <Button fx:id="btnSaveAs" text="Save As..." styleClass="button" />
+            <Separator orientation="VERTICAL" />
+            <ProgressBar fx:id="progressSave" prefWidth="100" progress="0" />
+        </HBox>
+    </HBox>
+
+    <Separator />
+
+    <!-- Title Input -->
+    <VBox spacing="5">
+        <Label text="Title:" style="-fx-font-weight: bold;" />
+        <TextField fx:id="txtTitle" promptText="Enter entry title..." style="-fx-font-size: 16px;" />
+    </VBox>
+
+    <!-- Formatting Toolbar (Hidden by default) -->
+    <ToolBar fx:id="formattingToolbar" style="-fx-padding: 5;">
+        <Button fx:id="btnFormatBold" text="B" style="-fx-font-weight: bold;" />
+        <Button fx:id="btnFormatItalic" text="I" style="-fx-font-style: italic;" />
+        <Button fx:id="btnFormatUnderline" text="U" style="-fx-underline: true;" />
+        <Separator orientation="VERTICAL" />
+        <Button fx:id="btnInsertBullet" text="• Bullet" />
+        <Button fx:id="btnInsertNumber" text="1. Number" />
+    </ToolBar>
+
+    <!-- Editor Area -->
+    <VBox spacing="5" VBox.vgrow="ALWAYS">
+        <Label text="Content:" style="-fx-font-weight: bold;" />
+
+        <!-- HTML Editor (Hidden by default) -->
+        <HTMLEditor fx:id="htmlEditor" prefHeight="400" />
+
+        <!-- Plain Text Editor (Default) -->
+        <TextArea fx:id="txtContent"
+                  promptText="Write your thoughts here..."
+                  wrapText="true"
+                  VBox.vgrow="ALWAYS" />
+    </VBox>
+
+    <!-- Metadata Section -->
+    <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+        <HBox spacing="20">
+            <!-- Tags -->
+            <VBox spacing="5" prefWidth="300">
+                <Label text="Tags:" style="-fx-font-weight: bold;" />
+                <TextField fx:id="txtTags" promptText="Add tags (comma separated)" />
+            </VBox>
+
+            <!-- Mood -->
+            <VBox spacing="5">
+                <Label text="Mood:" style="-fx-font-weight: bold;" />
+                <ComboBox fx:id="cmbMood" prefWidth="150" />
+            </VBox>
+
+            <!-- Favorite -->
+            <VBox spacing="5" alignment="CENTER_LEFT">
+                <CheckBox fx:id="chkFavorite" text="⭐ Favorite" />
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Status Bar -->
+    <HBox spacing="20" style="-fx-padding: 10 0 0 0;">
+        <Label fx:id="lblStatus" text="Ready" />
+        <Label fx:id="lblWordCount" text="Words: 0" />
+        <Label fx:id="lblCharCount" text="Chars: 0" />
+        <HBox HBox.hgrow="ALWAYS" />
+        <Label text="Ctrl+S to save" style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" />
+    </HBox>
+
+</VBox>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.diary.manager.controllers.SettingsController"
+      spacing="15" style="-fx-padding: 20;">
+
+    <!-- Header -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Settings" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        <HBox spacing="5" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+            <Button text="ℹ️ About" onAction="#showAbout" />
+            <Button text="❓ Help" onAction="#showHelp" />
+        </HBox>
+    </HBox>
+
+    <Separator />
+
+    <!-- Settings Tabs using VBox sections -->
+    <VBox spacing="20">
+
+        <!-- Appearance Section -->
+        <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+            <Label text="Appearance" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <VBox spacing="5">
+                    <Label text="Theme:" />
+                    <ToggleButton fx:id="btnThemeToggle" text="☀️ Light Mode" />
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Font Family:" />
+                    <ComboBox fx:id="cmbFontFamily" prefWidth="150" />
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Font Size:" />
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Slider fx:id="sldFontSize" min="10" max="24" value="14" prefWidth="100" />
+                        <Label fx:id="lblFontSize" text="14 px" />
+                    </HBox>
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <!-- Editor Section -->
+        <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+            <Label text="Editor Settings" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+            <VBox spacing="10">
+                <HBox spacing="20">
+                    <VBox spacing="10">
+                        <HBox spacing="10">
+                            <CheckBox fx:id="chkAutoSave" text="Auto-save" />
+                            <Label fx:id="lblAutoSaveInterval" text="60 seconds" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Auto-save interval:" />
+                            <Slider fx:id="sldAutoSaveInterval" min="10" max="300" value="60" prefWidth="150" />
+                        </HBox>
+                    </VBox>
+
+                    <VBox spacing="10">
+                        <CheckBox fx:id="chkSpellCheck" text="Spell Check" />
+                        <CheckBox fx:id="chkWordWrap" text="Word Wrap" />
+                        <CheckBox fx:id="chkShowLineNumbers" text="Show Line Numbers" />
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <!-- Data Management Section -->
+        <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+            <Label text="Data Management" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+            <VBox spacing="15">
+                <!-- Storage Info -->
+                <VBox spacing="5">
+                    <Label text="Storage Usage:" />
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <ProgressBar fx:id="storageProgress" prefWidth="200" />
+                        <Label fx:id="lblStorageUsed" text="0.00 MB" />
+                    </HBox>
+                </VBox>
+
+                <!-- Data Location -->
+                <VBox spacing="5">
+                    <Label text="Data Location:" />
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label fx:id="lblDataLocation" text="" style="-fx-text-fill: #7f8c8d;" />
+                        <Button text="📂 Open Folder" onAction="#openDataFolder" />
+                    </HBox>
+                </VBox>
+
+                <!-- Action Buttons -->
+                <HBox spacing="10">
+                    <Button fx:id="btnExportAll" text="📤 Export All Entries" styleClass="button-primary" />
+                    <Button fx:id="btnImportEntries" text="📥 Import Entries" styleClass="button" />
+                    <Button fx:id="btnClearData" text="🗑 Clear All Data" styleClass="button-danger" />
+                    <Button text="🔄 Check for Updates" onAction="#checkForUpdates" />
+                </HBox>
+            </VBox>
+        </VBox>
+
+        <!-- Reset Section -->
+        <VBox spacing="10" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+            <Label text="Reset" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+            <VBox spacing="10">
+                <Label text="Reset all settings to default values:" style="-fx-text-fill: #7f8c8d;" />
+                <Button fx:id="btnResetSettings" text="🔄 Reset Settings" styleClass="button" />
+            </VBox>
+        </VBox>
+
+    </VBox>
+
+</VBox>
